@@ -12,6 +12,7 @@ npm install -g expo-cli
 Start the project with
 ```
 cd mobileApp
+npm install
 npm start
 ```
 
