@@ -12,7 +12,7 @@ import {
 
 import { MonoText } from '../components/StyledText';
 
-export default function HomeScreen() {
+export default function AllGroupScreen() {
   return (
     <View style={styles.container}>
       <ScrollView
@@ -35,8 +35,8 @@ export default function HomeScreen() {
           <Text style={styles.getStartedText}>Get started by opening</Text>
 
           <View
-            style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-            <MonoText>screens/HomeScreen.js</MonoText>
+            style={[styles.codeHighlightContainer, styles.allGroupScreenFilename]}>
+            <MonoText>screens/AllGroupScreen.js</MonoText>
           </View>
 
           <Text style={styles.getStartedText}>
@@ -69,8 +69,8 @@ export default function HomeScreen() {
   );
 }
 
-HomeScreen.navigationOptions = {
-  header: null,
+AllGroupScreen.navigationOptions = {
+  title: 'My Groups',
 };
 
 function DevelopmentModeNotice() {
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginHorizontal: 50,
   },
-  homeScreenFilename: {
+  allGroupScreenFilename: {
     marginVertical: 7,
   },
   codeHighlightText: {
