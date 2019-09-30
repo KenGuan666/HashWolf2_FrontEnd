@@ -40,19 +40,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  header:{
+  header: {
     fontSize: 40,
     color: '#2e78b7',
     textAlign:'center',
   },
-  username:{
+  username: {
     height: 40,
-    autoFocus:true, 
     width: 200,
     borderColor: 'gray', 
     borderWidth: 2,
   },
-  password:{
+  password: {
     height: 40,
     width: 200,
     borderColor: 'gray', 
