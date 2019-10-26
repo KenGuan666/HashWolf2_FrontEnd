@@ -10,10 +10,10 @@ class ProfileScreen extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      users: [0, 1],
+      users: [0],
     };
   };
-  
+
   componentDidMount () {
     userApi.allUsers()
       .then(users => {

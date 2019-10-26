@@ -1,9 +1,10 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import { createStackNavigator, createSwitchNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
-import AllGroupScreen from '../screens/AllGroupScreen';
+import AllGroupScreenNavigator from '../navigation/AllGroupScreenNavigator';
+import SingleGroupScreenNavigator from '../navigation/SingleGroupScreenNavigator';
 import NewGroupScreen from '../screens/NewGroupScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 
@@ -12,11 +13,17 @@ const config = Platform.select({
   default: {},
 });
 
-const AllGroupStack = createStackNavigator(
+const AllGroupScreenStack = createSwitchNavigator({ AllGroup: AllGroupScreenNavigator });
+const SingleGroupScreenStack = createSwitchNavigator({ SingleGroup: SingleGroupScreenNavigator });
+
+const AllGroupStack = createSwitchNavigator(
   {
-    AllGroup: AllGroupScreen,
+    AllGroupScreen: AllGroupScreenStack,
+    SingleGroupScreen: SingleGroupScreenStack,
   },
-  config
+  {
+    initialRouteName: 'AllGroupScreen',
+  },
 );
 
 AllGroupStack.navigationOptions = {
