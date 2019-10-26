@@ -1,71 +1,28 @@
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import {
-  Image,
   Platform,
-  ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
-  Button,
 } from 'react-native';
 
-import { MonoText } from '../components/StyledText';
+import GroupHeader from '../components/GroupHeader';
+import GroupList from '../components/GroupList';
+
+const mockGroups = [1,2,3,4,5,6,7,8,9,10].map(i => ({
+  groupName: i,
+  groupDescription: i,
+  users: [i],
+}));
 
 class AllGroupScreen extends React.Component {
  
   render () {
     return (
       <View style={styles.container}>
-        <ScrollView
-          style={styles.container}
-          contentContainerStyle={styles.contentContainer}>
-          <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
-              }
-              style={styles.welcomeImage}
-            />
-          </View>
-  
-          <View style={styles.getStartedContainer}>
-            <DevelopmentModeNotice />
-  
-            <Text style={styles.getStartedText}>Get started by opening</Text>
-  
-            <View
-              style={[styles.codeHighlightContainer, styles.allGroupScreenFilename]}>
-              <MonoText>screens/AllGroupScreen.js</MonoText>
-            </View>
-          </View>
-  
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>
-                Help, it didn’t automatically reload!
-              </Text>
-            </TouchableOpacity>
-          </View>
-
-          <Button title="Switch to Single Group Page" onPress={this.toSingleGroup}> </Button>
-        </ScrollView>
-  
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>
-            Hello! This is Lucy!
-          </Text>
-  
-          <View
-            style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>
-              navigation/MainTabNavigator.js
-            </MonoText>
-          </View>
-        </View>
+        <GroupHeader username='ken'> </GroupHeader>
+        <GroupList groups={mockGroups} navigator={() => this.props.navigation.navigate('SingleGroupScreen')}> </GroupList>
       </View>
     );
   };

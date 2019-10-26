@@ -6,7 +6,6 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   Button,
   View,
 } from 'react-native';
@@ -14,50 +13,24 @@ import {
 import { MonoText } from '../components/StyledText';
 
 class SingleGroupScreen extends React.Component {
+
+  constructor (props) {
+    super(props);
+    this.groupName = props.groupName;
+  }
  
   render () {
     return (
       <View style={styles.container}>
         <ScrollView
-          style={styles.container}
-          contentContainerStyle={styles.contentContainer}>
-          <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
-              }
-              style={styles.welcomeImage}
-            />
-          </View>
-  
-          <View style={styles.getStartedContainer}>
-            <DevelopmentModeNotice />
-  
-            <Text style={styles.getStartedText}>Get started by opening</Text>
-  
-            <View
-              style={[styles.codeHighlightContainer, styles.allGroupScreenFilename]}>
-              <MonoText>screens/SingleGroupScreen.js</MonoText>
-            </View>
-          </View>
+          style={styles.container}>
+
+          <Text>
+            {this.groupName}
+          </Text>
 
           <Button title="Switch back to All Groups Page" onPress={this.toAllGroups}> </Button>
         </ScrollView>
-  
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>
-            Hello! This is Lucy!
-          </Text>
-  
-          <View
-            style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>
-              navigation/MainTabNavigator.js
-            </MonoText>
-          </View>
-        </View>
       </View>
     );
   };
