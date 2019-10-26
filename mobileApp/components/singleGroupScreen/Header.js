@@ -1,11 +1,13 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-class GroupHeader extends React.Component {
+class Header extends React.Component {
 
     constructor(props) {
         super(props);
         this.username = props.username;
+        this.balance = props.balance;
+        this.groupName = props.groupName;
     }
 
     render () {
@@ -15,7 +17,7 @@ class GroupHeader extends React.Component {
                     Hi, {this.username}!
                 </Text>
                 <Text style={textStyle}>
-                    The amount you owe and are owed are displayed here.
+                    Your balance in {this.groupName} is {this.balance}
                 </Text>
             </View>
         )
@@ -24,7 +26,7 @@ class GroupHeader extends React.Component {
 
 const viewStyle = {
     width: '100%',
-    height: '20%',
+    height: '25%',
     backgroundColor: '#89cff0',
     justifyContent: 'flex-end', 
     alignItems: 'center'
@@ -34,4 +36,4 @@ const textStyle = {
     fontSize: 17,
 }
 
-export default GroupHeader;
+export default Header;
