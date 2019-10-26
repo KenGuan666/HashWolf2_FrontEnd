@@ -7,13 +7,13 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
   Button,
+  View,
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
 
-class AllGroupScreen extends React.Component {
+class SingleGroupScreen extends React.Component {
  
   render () {
     return (
@@ -39,19 +39,11 @@ class AllGroupScreen extends React.Component {
   
             <View
               style={[styles.codeHighlightContainer, styles.allGroupScreenFilename]}>
-              <MonoText>screens/AllGroupScreen.js</MonoText>
+              <MonoText>screens/SingleGroupScreen.js</MonoText>
             </View>
           </View>
-  
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>
-                Help, it didn’t automatically reload!
-              </Text>
-            </TouchableOpacity>
-          </View>
 
-          <Button title="Switch to Single Group Page" onPress={this.toSingleGroup}> </Button>
+          <Button title="Switch back to All Groups Page" onPress={this.toAllGroups}> </Button>
         </ScrollView>
   
         <View style={styles.tabBarInfoContainer}>
@@ -70,12 +62,12 @@ class AllGroupScreen extends React.Component {
     );
   };
 
-  toSingleGroup = () => {
-    this.props.navigation.navigate('SingleGroupScreen');
+  toAllGroups = () => {
+    this.props.navigation.navigate('AllGroupScreen');
   };
 }
 
-AllGroupScreen.navigationOptions = {
+SingleGroupScreen.navigationOptions = {
   title: 'My Groups',
 };
 
@@ -203,4 +195,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AllGroupScreen;
+export default SingleGroupScreen;
