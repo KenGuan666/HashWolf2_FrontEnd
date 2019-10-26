@@ -3,7 +3,6 @@ import { Platform } from 'react-native';
 import { createStackNavigator, createSwitchNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
-import AllGroupScreenNavigator from '../navigation/AllGroupScreenNavigator';
 import AllGroupScreen from '../screens/AllGroupScreen';
 import SingleGroupScreen from '../screens/SingleGroupScreen';
 import NewGroupScreen from '../screens/NewGroupScreen';
