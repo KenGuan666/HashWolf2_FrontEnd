@@ -6,17 +6,15 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  Header,
   Button,
   View,
 } from 'react-native';
-
-import { MonoText } from '../components/StyledText';
 
 class SingleGroupScreen extends React.Component {
 
   constructor (props) {
     super(props);
-    this.groupName = props.groupName;
   }
  
   render () {
@@ -26,7 +24,7 @@ class SingleGroupScreen extends React.Component {
           style={styles.container}>
 
           <Text>
-            {this.groupName}
+            Group Name: {JSON.stringify(this.props.navigation.getParam('groupName', 'Not Found'))}
           </Text>
 
           <Button title="Switch back to All Groups Page" onPress={this.toAllGroups}> </Button>
@@ -41,7 +39,7 @@ class SingleGroupScreen extends React.Component {
 }
 
 SingleGroupScreen.navigationOptions = {
-  title: 'My Groups',
+  title: 'This Group',
 };
 
 function DevelopmentModeNotice() {

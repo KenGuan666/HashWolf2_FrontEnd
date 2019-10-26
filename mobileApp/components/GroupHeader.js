@@ -14,7 +14,7 @@ class GroupHeader extends React.Component {
                 <Text style={textStyle}>
                     Hi, {this.username}!
                 </Text>
-                <Text style={{textAlign: 'center'}}>
+                <Text style={textStyle}>
                     The amount you owe and are owed are displayed here.
                 </Text>
             </View>
@@ -24,13 +24,14 @@ class GroupHeader extends React.Component {
 
 const viewStyle = {
     width: '100%',
-    height: '12%',
+    height: '20%',
     backgroundColor: '#89cff0',
+    justifyContent: 'flex-end', 
+    alignItems: 'center'
 };
 
 const textStyle = {
-    textAlign: 'center',
-    fontSize: 22,
+    fontSize: 17,
 }
 
 export default GroupHeader;

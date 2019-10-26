@@ -22,7 +22,7 @@ class AllGroupScreen extends React.Component {
     return (
       <View style={styles.container}>
         <GroupHeader username='ken'> </GroupHeader>
-        <GroupList groups={mockGroups} navigator={() => this.props.navigation.navigate('SingleGroupScreen')}> </GroupList>
+        <GroupList groups={mockGroups} navigation={this.props.navigation}> </GroupList>
       </View>
     );
   };
@@ -33,6 +33,7 @@ class AllGroupScreen extends React.Component {
 }
 
 AllGroupScreen.navigationOptions = {
+  header: null,
   title: 'My Groups',
 };
 
