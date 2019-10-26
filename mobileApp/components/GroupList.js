@@ -7,7 +7,6 @@ class GroupList extends React.Component {
     constructor (props) {
         super(props);
         this.groups = props.groups;
-        this.navigator = props.navigator;
     }
 
     render () {
@@ -20,7 +19,7 @@ class GroupList extends React.Component {
                             groupName={group.groupName}
                             groupDescription={group.groupDescription}
                             users={group.users}
-                            navigator={this.navigator}
+                            navigation={this.props.navigation}
                         ></GroupEntryContainer>
                     )
                 }
@@ -36,13 +35,12 @@ class GroupEntryContainer extends React.Component {
         this.groupName = props.groupName;
         this.groupDescription = props.groupDescription;
         this.users = props.users;
-        this.navigator = props.navigator;
     }
 
     render () {
         return (
             <View style={container}>
-                <TouchableOpacity onPress={this.navigator}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('SingleGroupScreen', { groupName: this.groupName })}>
                     <GroupEntry
                         groupName={this.groupName}
                         groupDescription={this.groupDescription}

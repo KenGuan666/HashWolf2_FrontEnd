@@ -4,7 +4,8 @@ import { createStackNavigator, createSwitchNavigator, createBottomTabNavigator }
 
 import TabBarIcon from '../components/TabBarIcon';
 import AllGroupScreenNavigator from '../navigation/AllGroupScreenNavigator';
-import SingleGroupScreenNavigator from '../navigation/SingleGroupScreenNavigator';
+import AllGroupScreen from '../screens/AllGroupScreen';
+import SingleGroupScreen from '../screens/SingleGroupScreen';
 import NewGroupScreen from '../screens/NewGroupScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 
@@ -13,13 +14,10 @@ const config = Platform.select({
   default: {},
 });
 
-const AllGroupScreenStack = createSwitchNavigator({ AllGroup: AllGroupScreenNavigator });
-const SingleGroupScreenStack = createSwitchNavigator({ SingleGroup: SingleGroupScreenNavigator });
-
-const AllGroupStack = createSwitchNavigator(
+const AllGroupStack = createStackNavigator(
   {
-    AllGroupScreen: AllGroupScreenStack,
-    SingleGroupScreen: SingleGroupScreenStack,
+    AllGroupScreen: { screen: AllGroupScreen },
+    SingleGroupScreen: { screen: SingleGroupScreen },
   },
   {
     initialRouteName: 'AllGroupScreen',
