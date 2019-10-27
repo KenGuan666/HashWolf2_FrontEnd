@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 
 class Header extends React.Component {
 
@@ -13,6 +13,10 @@ class Header extends React.Component {
     render () {
         return (
             <View style={viewStyle}>
+                <Image
+                style={imageStyle}
+                source={require('../../assets/images/tahoe.png')}
+                />
                 <Text style={textStyle}>
                     Hi, {this.username}!
                 </Text>
@@ -31,7 +35,10 @@ const viewStyle = {
     justifyContent: 'flex-end', 
     alignItems: 'center'
 };
-
+const imageStyle = {
+    width: 80,
+    height: 80,
+};
 const textStyle = {
     fontSize: 17,
 };

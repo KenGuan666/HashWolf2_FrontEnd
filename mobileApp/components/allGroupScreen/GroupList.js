@@ -15,7 +15,7 @@ class GroupList extends React.Component {
                 {
                     this.groups.map(group => 
                         <GroupEntryContainer
-                            key={group.groupName}
+                            key={group.groupId}
                             groupId={group.groupId}
                             groupName={group.groupName}
                             groupDescription={group.groupDescription}
