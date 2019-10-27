@@ -10,9 +10,9 @@ const config = Platform.select({
 
 const NavigationStack = createStackNavigator(
   {
-    SignIn: LoginScreen
+    SignIn: LoginScreen,
   },
-  config
+  config,
 );
 
 NavigationStack.path = '';

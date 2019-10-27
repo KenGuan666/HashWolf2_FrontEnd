@@ -8,7 +8,7 @@ class Header extends React.Component {
         this.username = props.username;
         this.balance = props.balance;
         this.groupName = props.groupName;
-    }
+    };
 
     render () {
         return (
@@ -20,8 +20,8 @@ class Header extends React.Component {
                     Your balance in {this.groupName} is {this.balance}
                 </Text>
             </View>
-        )
-    }
+        );
+    };
 }
 
 const viewStyle = {
@@ -34,6 +34,6 @@ const viewStyle = {
 
 const textStyle = {
     fontSize: 17,
-}
+};
 
 export default Header;

@@ -41,7 +41,7 @@ const NewGroupStack = createStackNavigator(
   {
     NewGroup: NewGroupScreen,
   },
-  config
+  config,
 );
 
 NewGroupStack.navigationOptions = {
@@ -57,7 +57,7 @@ const ProfileStack = createStackNavigator(
   {
     Profile: ProfileScreen,
   },
-  config
+  config,
 );
 
 ProfileStack.navigationOptions = {
