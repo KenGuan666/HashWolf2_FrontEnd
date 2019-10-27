@@ -1,6 +1,8 @@
 import React from 'react';
-import { View, TouchableOpacity, ScrollView } from 'react-native';
+import { View, TouchableOpacity, ScrollView, Text } from 'react-native';
+import { Overlay } from 'react-native-elements';
 import EventPreview from './EventPreview';
+import EventDetail from './EventDetail';
 
 const author = 'ken';
 
@@ -22,6 +24,9 @@ class EventDialogue extends React.Component {
 
     constructor (props) {
         super(props);
+        this.state = {
+            touchedEvent: null,
+        };
         this.user = props.user;
         this.eventIds = props.eventIds;
         this.eventsData = getEventsFromIds(this.eventIds);
@@ -33,6 +38,7 @@ class EventDialogue extends React.Component {
                 {
                     this.eventsData.map(event => 
                         <EventPreviewContainer
+                            id={event.id}
                             user={this.user}
                             key={event.id}
                             name={event.name}
@@ -41,9 +47,20 @@ class EventDialogue extends React.Component {
                             payment={event.paymentInfo}
                             users={event.users}
                             author={event.author}
+                            setParentState={(state) => this.setState(state)}
                         ></EventPreviewContainer>
                     )
                 }
+                <Overlay
+                    isVisible={!!this.state.touchedEvent}
+                    windowBackgroundColor="rgba(255, 255, 255, .3)"
+                    overlayBackgroundColor="rgb(255, 255, 255)"
+                    onBackdropPress={() => { this.setState({ touchedEvent: false }) }}
+                    width="84%"
+                    height="60%"
+                >
+                    <EventDetail id={this.state.touchedEvent} user={this.user} > </EventDetail>
+                </Overlay>
             </ScrollView>
         )
     }
@@ -53,6 +70,7 @@ class EventPreviewContainer extends React.Component {
 
     constructor (props) {
         super(props);
+        this.id = props.id;
         this.user = props.user;
         this.name = props.name;
         this.time = props.time;
@@ -65,7 +83,7 @@ class EventPreviewContainer extends React.Component {
     render () {
         return (
             <View style={container}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => this.props.setParentState({ touchedEvent: this.id })}>
                     <EventPreview
                         user={this.user}
                         name={this.name}
