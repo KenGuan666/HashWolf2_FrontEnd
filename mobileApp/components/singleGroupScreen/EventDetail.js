@@ -12,12 +12,12 @@ class EventDetail extends React.Component {
         this.id = props.id;
         this.user = props.user;
         this.data = getEventDetailFromId(this.id);
-    }
+    };
 
     render () {
         return (
             <Text>Hello from Overlay {this.id} !</Text>
-        )
+        );
     };
 }
 

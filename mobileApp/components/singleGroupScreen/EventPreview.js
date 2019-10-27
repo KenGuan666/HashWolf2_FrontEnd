@@ -4,7 +4,7 @@ import { View, Text } from 'react-native';
 const UTCtoReadable = (time) => {
     [hour, min] = time.split('T')[1].split(':').slice(0, 2);
     return `${hour}:${min}`;
-} 
+};
 
 class EventPreview extends React.Component {
 
@@ -28,8 +28,8 @@ class EventPreview extends React.Component {
                     You paid {this.payment}
                 </Text>
             </View>
-        )
-    }
+        );
+    };
 }
 
 const button = {
@@ -42,6 +42,6 @@ const button = {
 const textStyle = {
     textAlign: 'center',
     fontSize: 18,
-}
+};
 
 export default EventPreview;

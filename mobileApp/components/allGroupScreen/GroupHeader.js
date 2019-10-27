@@ -6,7 +6,7 @@ class GroupHeader extends React.Component {
     constructor(props) {
         super(props);
         this.username = props.username;
-    }
+    };
 
     render () {
         return (
@@ -18,8 +18,8 @@ class GroupHeader extends React.Component {
                     The amount you owe and are owed are displayed here.
                 </Text>
             </View>
-        )
-    }
+        );
+    };
 }
 
 const viewStyle = {
@@ -32,6 +32,6 @@ const viewStyle = {
 
 const textStyle = {
     fontSize: 17,
-}
+};
 
 export default GroupHeader;

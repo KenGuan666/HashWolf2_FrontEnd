@@ -8,7 +8,7 @@ class GroupEntry extends React.Component {
         this.groupName = props.groupName;
         this.groupDescription = props.groupDescription;
         this.users = props.users;
-    }
+    };
 
     render () {
         return (
@@ -19,8 +19,8 @@ class GroupEntry extends React.Component {
                     Users: {this.users}
                 </Text>
             </View>
-        )
-    }
+        );
+    };
 }
 
 const button = {
@@ -33,6 +33,6 @@ const button = {
 const textStyle = {
     textAlign: 'center',
     fontSize: 18,
-}
+};
 
 export default GroupEntry;

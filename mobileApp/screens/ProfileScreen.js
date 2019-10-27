@@ -21,14 +21,14 @@ class ProfileScreen extends React.Component {
           this.setState({ users: users });
         }
       });
-  }
+  };
 
   render () {
     self = this
     return (
       <User name={self.state.users[0].name} email={self.state.users[0].email} />
     );
-  }
+  };
 }
 
 ProfileScreen.navigationOptions = {

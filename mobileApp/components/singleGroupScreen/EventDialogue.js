@@ -18,7 +18,7 @@ const getEventsFromIds = (ids) => {
         users: ['ken', 'sprite'],
         author,
     }));
-}
+};
 
 class EventDialogue extends React.Component {
 
@@ -30,7 +30,7 @@ class EventDialogue extends React.Component {
         this.user = props.user;
         this.eventIds = props.eventIds;
         this.eventsData = getEventsFromIds(this.eventIds);
-    }
+    };
 
     render () {
         return (
@@ -62,8 +62,8 @@ class EventDialogue extends React.Component {
                     <EventDetail id={this.state.touchedEvent} user={this.user} > </EventDetail>
                 </Overlay>
             </ScrollView>
-        )
-    }
+        );
+    };
 }
 
 class EventPreviewContainer extends React.Component {
@@ -78,7 +78,7 @@ class EventPreviewContainer extends React.Component {
         this.payment = props.payment;
         this.users = props.users;
         this.author = props.author;
-    }
+    };
 
     render () {
         return (
@@ -95,19 +95,19 @@ class EventPreviewContainer extends React.Component {
                     ></EventPreview>
                 </TouchableOpacity>
             </View>
-        )
-    }
+        );
+    };
 }
 
 const background = {
     flex: 1,
     backgroundColor: '#fff',
-}
+};
 
 const container = {
     flexDirection: 'column',
     alignItems: 'stretch',
     marginTop: 8,
-}
+};
 
 export default EventDialogue;

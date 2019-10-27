@@ -1,12 +1,10 @@
 import Icon from 'react-native-vector-icons/FontAwesome';
 import React from 'react';
 import {
-  Button,
   View,
   StyleSheet,
   Text, 
   TextInput,
-  AppRegistry,
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -35,15 +33,15 @@ class LoginScreen extends React.Component {
           <Text style={styles.buttonWords}> Sign In </Text>
         </TouchableOpacity> 
 
-        <View style={{flexDirection: 'row', marginTop: 300}}>
-        <Text style={styles.signup}>Don't have an account? </Text>
+        <View style={{ flexDirection: 'row', marginTop: 300 }}>
+        <Text style={styles.signup}> Don't have an account? </Text>
         <TouchableOpacity onPress={this.signIn}>
-        <Text style={{fontSize:14, color: '#33B5C3'}}> Sign up</Text>
+        <Text style={{ fontSize:14, color: '#33B5C3' }}> Sign up</Text>
         </TouchableOpacity>
         </View>
       </View>
     );
-  }
+  };
 
   signIn = () => {
     this.props.navigation.navigate('App');
@@ -111,7 +109,7 @@ const styles = StyleSheet.create({
     // marginTop:300,
     fontSize:14,
     color:'#fff',
-  }
+  },
 });
 
 export default LoginScreen;

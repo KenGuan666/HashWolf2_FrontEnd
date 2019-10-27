@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import GroupHeader from '../components/allGroupScreen/GroupHeader';
 import GroupList from '../components/allGroupScreen/GroupList';
 
-const mockGroups = [1,2,3,4,5,6,7,8,9,10].map(i => ({
+const mockGroups = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(i => ({
   groupId: i,
   groupName: i,
   groupDescription: i,
