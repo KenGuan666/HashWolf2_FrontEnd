@@ -2,13 +2,17 @@ import React from 'react';
 import {
   StyleSheet,
   View,
+  Image,
 } from 'react-native';
 
 import GroupHeader from '../components/singleGroupScreen/Header';
 import EventDialogue from '../components/singleGroupScreen/EventDialogue';
 
+
+const groupNames = ['Tahoe', 'Roomie', 'Friday Out'];
+
 const getGroupById = (id) => ({
-  groupName: `Group ${id}`,
+  groupName: groupNames[id % groupNames.length],
   groupDescription: id,
   userBalance: {
     ken: id,
@@ -17,7 +21,7 @@ const getGroupById = (id) => ({
   events: [
     id * 10 + 1,
     id * 10 + 2,
-  ]
+  ],
 });
 
 const user = 'ken';
@@ -56,3 +60,4 @@ const styles = StyleSheet.create({
 });
 
 export default SingleGroupScreen;
+

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 
 const getEventDetailFromId = (id) => ({
 
@@ -16,9 +16,34 @@ class EventDetail extends React.Component {
 
     render () {
         return (
-            <Text>Hello from Overlay {this.id} !</Text>
-        );
-    };
-}
+            <View style={viewStyle}>
+                <Image style = {imageStyle} source = {require('../../assets/images/lucy.png')}/>
+                    <Text style={textStyle}>
+                        Event {this.id}{"\n"}
+                        Sept 10{"\n"} 
+                        $100 {"\n"} 
+                        James, Ken{"\n"} 
+                        "Price adjusted."{"\n"} 
+                     </Text>
+                </View>
+            );
+        };
+    }
 
+const viewStyle = {
+    width: '100%',
+    height: '80%',
+    backgroundColor: '#89cff0',
+    justifyContent: 'flex-end', 
+    alignItems: 'center'
+};
+const textStyle = {
+    textAlign: 'center',
+    fontSize: 18, 
+};
+const imageStyle = {
+    width: 80,
+    height: 80,
+    alignItems: 'center',
+};
 export default EventDetail;
