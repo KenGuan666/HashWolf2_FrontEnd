@@ -11,40 +11,51 @@ class GroupHeader extends React.Component {
     render () {
         return (
             <View style={viewStyle}>
-                <View style={{flexDirection:'row', alignItems: 'flex_start', marginTop:100,}}>
-                    <View style={{marginLeft:0,}}>
+                <View style={styles.headerStyle}>
+                    <View style={{marginLeft:-20}}>
                         <Image style={styles.imagestyle} source={require('../../assets/images/james.png')}/>
                     </View>
-                    <View style={{margintop:40, marginLeft: 100,}}>
-                        <Text style={{color:'black', fontSize:16, paddingBottom: 15,}}> @James-666 </Text>
-                        <Text> You owe $300 {'\n'} You are owed $100 </Text>
+                    <View style={{marginLeft: 20,}}>
+                        <Text style={styles.nameText}> @James-666 </Text>
+                        <Text style={styles.oweText}> You owe $300 {'\n'} You are owed $100 </Text>
                     </View>
                 </View>
-                
-                <Text style={textStyle}>
-                    Hi, {this.username}!
-                </Text>
-                <Text style={textStyle}>
-                    The amount you owe and are owed are displayed here.
-                </Text>
             </View>
         );
     };
 }
 
 const styles = StyleSheet.create({
+    headerStyle: {
+        flexDirection:'row', 
+        alignItems: 'flex-start', 
+        marginTop:90,
+        backgroundColor: '#DFE8ED',
+    },
     imagestyle: {
-        width:80,
-        height:80,
-    }
+        width:100,
+        height:100,
+        borderRadius: 100/2,
+    },
+    nameText: {
+        color:'#00597D', 
+        fontSize:22, 
+        fontWeight: "bold",
+        paddingBottom: 10,
+        paddingTop: 20,
+    },
+    oweText: {
+        color: '#859EAC',
+        fontSize: 12,
+    },
 })
 
 const viewStyle = {
     width: '100%',
     height: '30%',
-    backgroundColor: '#89cff0',
+    backgroundColor: '#DFE8ED',
     justifyContent: 'flex-start', 
-    alignItems: 'center'
+    alignItems: 'center',
 };
 
 const textStyle = {
