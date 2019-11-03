@@ -8,9 +8,19 @@ import {
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
+const defaultUsername = 'DEFAULT';
+
 class LoginScreen extends React.Component {
   static navigationOptions = {
     header: null,
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      password: '',
+    };
   };
 
   render() {
@@ -21,8 +31,8 @@ class LoginScreen extends React.Component {
           Aha
         </Text>
 
-        <TextInput style={styles.username} placeholder="   Mobile number or email"/>
-        <TextInput style={styles.password} placeholder="   Enter your password"/>
+        <TextInput style={styles.username} placeholder="   Mobile number or email" onChangeText={text => this.setState({ username: text })}/>
+        <TextInput style={styles.password} placeholder="   Enter your password" onChangeText={text => this.setState({ password: text })}/>
 
         <Text style={styles.forgotpassword}> Forgot Password? </Text>
 
@@ -44,11 +54,10 @@ class LoginScreen extends React.Component {
   };
 
   signIn = () => {
-    this.props.navigation.navigate('App');
+    this.props.navigation.navigate('App', { user: { username: this.state.username ? this.state.username : defaultUsername } });
   };
 
-
-}
+};
 
 const styles = StyleSheet.create({
   container: {

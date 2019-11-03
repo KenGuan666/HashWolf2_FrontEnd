@@ -23,7 +23,7 @@ class GroupHeader extends React.Component {
             </View>
         );
     };
-}
+};
 
 const styles = StyleSheet.create({
     headerStyle: {

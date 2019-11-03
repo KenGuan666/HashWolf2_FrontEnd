@@ -17,11 +17,22 @@ class AllGroupScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
+
+  getParam(paramName) {
+    const { getParam, dangerouslyGetParent } = this.props.navigation;
+    let parent = dangerouslyGetParent();
+    let val = getParam(paramName);
+    while (val === undefined && parent && parent.getParam) {
+      val = parent.getParam(paramName);
+      parent = parent.dangerouslyGetParent();
+    }
+    return val;
+  };
  
   render () {
     return (
       <View style={container}>
-        <GroupHeader username='James'> </GroupHeader>
+        <GroupHeader username={this.getParam('user').username}> </GroupHeader>
         <GroupList groups={mockGroups} navigation={this.props.navigation}> </GroupList>
       </View>
     );
@@ -30,7 +41,7 @@ class AllGroupScreen extends React.Component {
   toSingleGroup = () => {
     this.props.navigation.navigate('SingleGroupScreen');
   };
-}
+};
 
 const container = {
   flex: 1,
