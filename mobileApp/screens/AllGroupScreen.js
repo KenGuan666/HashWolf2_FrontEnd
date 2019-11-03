@@ -21,7 +21,7 @@ class AllGroupScreen extends React.Component {
   render () {
     return (
       <View style={container}>
-        <GroupHeader username='ken'> </GroupHeader>
+        <GroupHeader username='James'> </GroupHeader>
         <GroupList groups={mockGroups} navigation={this.props.navigation}> </GroupList>
       </View>
     );
