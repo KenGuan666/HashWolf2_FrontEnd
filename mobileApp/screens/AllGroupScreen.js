@@ -14,6 +14,11 @@ const mockGroups = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(i => ({
 
 class AllGroupScreen extends React.Component {
 
+  constructor (props) {
+    super(props);
+    this.user = this.getParam('user');
+  };
+
   static navigationOptions = {
     header: null,
   };
@@ -28,18 +33,14 @@ class AllGroupScreen extends React.Component {
     }
     return val;
   };
- 
+
   render () {
     return (
       <View style={container}>
-        <GroupHeader username={this.getParam('user').username}> </GroupHeader>
+        <GroupHeader username={this.user.username}> </GroupHeader>
         <GroupList groups={mockGroups} navigation={this.props.navigation}> </GroupList>
       </View>
     );
-  };
-
-  toSingleGroup = () => {
-    this.props.navigation.navigate('SingleGroupScreen');
   };
 };
 

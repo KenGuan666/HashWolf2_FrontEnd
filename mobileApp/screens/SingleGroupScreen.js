@@ -5,9 +5,8 @@ import {
   Image,
 } from 'react-native';
 
-import GroupHeader from '../components/singleGroupScreen/Header';
+import Header from '../components/singleGroupScreen/Header';
 import EventDialogue from '../components/singleGroupScreen/EventDialogue';
-
 
 const groupNames = ['Tahoe', 'Roomie', 'Friday Out'];
 
@@ -24,8 +23,6 @@ const getGroupById = (id) => ({
   ],
 });
 
-const user = 'ken';
-
 class SingleGroupScreen extends React.Component {
 
   static navigationOptions = {
@@ -36,13 +33,26 @@ class SingleGroupScreen extends React.Component {
     super(props);
     this.groupId = JSON.stringify(this.props.navigation.getParam('groupId', 'Not Found'));
     this.data = getGroupById(this.groupId);
+    this.user = this.getParam('user');
   }
 
+  getParam(paramName) {
+    const { getParam, dangerouslyGetParent } = this.props.navigation;
+    let parent = dangerouslyGetParent();
+    let val = getParam(paramName);
+    while (val === undefined && parent && parent.getParam) {
+      val = parent.getParam(paramName);
+      parent = parent.dangerouslyGetParent();
+    }
+    return val;
+  };
+
   render () {
+    const username = this.user.username;
     return (
       <View style={styles.container}>
-        <GroupHeader username={user} balance={this.data.userBalance[user]} groupName={this.data.groupName}></GroupHeader>
-        <EventDialogue user={user} eventIds={this.data.events}> </EventDialogue>
+        <Header username={username} balance={this.data.userBalance[username]} groupName={this.data.groupName}></Header>
+        <EventDialogue user={username} eventIds={this.data.events}> </EventDialogue>
       </View>
     );
   };

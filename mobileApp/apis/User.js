@@ -8,3 +8,18 @@ exports.allUsers = () => {
         .then(res => res.data, 
             err => ['Cannot find at ' + baseUrl]);
 }
+
+exports.login = (username, password) => {
+    mockNameToId = (username) => username === 'ken' ? 1 : 2;
+    const defaultUsername = 'DEFAULT';
+    if (username) {
+        return {
+            username,
+            userId: mockNameToId(username),
+        };
+    }
+    return {
+        username: defaultUsername,
+        userId: 0,
+    };
+};

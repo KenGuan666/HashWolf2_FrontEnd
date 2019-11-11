@@ -16,7 +16,7 @@ class GroupHeader extends React.Component {
             <Image style={styles.imagestyle} source={require('../../assets/images/james.png')} />
           </View>
           <View style={{ marginLeft: 20, }}>
-            <Text style={styles.nameText}> @James-666 </Text>
+            <Text style={styles.nameText}> @{this.username} </Text>
             <Text style={styles.oweText}> You owe $300 {'\n'} You are owed $100 </Text>
           </View>
         </View>
