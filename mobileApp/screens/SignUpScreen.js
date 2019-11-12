@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-class LoginScreen extends React.Component {
+class SignUpScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
@@ -17,8 +17,11 @@ class LoginScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      email: '',
       username: '',
       password: '',
+      signUpError: false,
+      userObj: {},
     };
   };
 
@@ -27,39 +30,50 @@ class LoginScreen extends React.Component {
 
       <View style={styles.container}>
         <Text style={styles.header}>
-          Aha
+          Please sign up with your email!
         </Text>
 
-        <TextInput style={styles.username} placeholder="   Mobile number or email" onChangeText={text => this.setState({ username: text })}/>
+        <TextInput style={styles.username} placeholder="   Mobile number or email" onChangeText={text => this.setState({ email: text })}/>
+        <TextInput style={styles.password} placeholder="   Nickname" onChangeText={text => this.setState({ username: text })}/>
         <TextInput style={styles.password} placeholder="   Enter your password" onChangeText={text => this.setState({ password: text })}/>
 
-        <Text style={styles.forgotpassword}> Forgot Password? </Text>
-
+        {
+          this.state.signUpError && <Text style={styles.signup}> Sign Up error, please try again! </Text>
+        }
+        <Text> {JSON.stringify(this.state.userObj)} </Text>
         <TouchableOpacity 
           style={styles.signin}
-          onPress={this.signIn}
+          onPress={this.create.bind(this)}
         >
-          <Text style={styles.buttonWords}> Sign In </Text>
+          <Text style={styles.buttonWords}> Sign Up </Text>
         </TouchableOpacity> 
 
         <View style={{ flexDirection: 'row', marginTop: 300 }}>
-        <Text style={styles.signup}> Don't have an account? </Text>
-        <TouchableOpacity onPress={this.signUp.bind(this)}>
-        <Text style={{ fontSize:14, color: '#33B5C3' }}> Sign up</Text>
+        <Text style={styles.signup}> Already have an account? </Text>
+        <TouchableOpacity onPress={this.signIn}>
+        <Text style={{ fontSize:14, color: '#33B5C3' }}> Sign in</Text>
         </TouchableOpacity>
         </View>
       </View>
     );
   };
 
-  signIn = () => {
-    userObj = userApi.login(this.state.username, this.state.password);
-    this.props.navigation.navigate('App', { user: userObj });
-  };
+  create = () => {
+    self = this
+    return userApi.createNewUser(this.state.email, this.state.username)
+      .then(data => {
+        this.setState({ userObj: data });
+        if (data) {
+          Object.assign(data, { username: data.name });
+          return self.props.navigation.navigate('App', { user: data });
+        }
+        this.setState({ signUpError: true });
+      });
+  }
 
-  signUp = () => {
-    this.props.navigation.navigate('SignUp');
-  };
+  signIn = () => {
+    this.props.navigation.navigate('SignIn');
+  }
 
 };
 
@@ -83,7 +97,7 @@ const styles = StyleSheet.create({
     height: 56,
     width: 263,
     borderRadius: 3,
-    color: "white",
+    color: "black",
     borderColor: '#707070', 
     backgroundColor: 'white',
     borderWidth: StyleSheet.hairlineWidth,
@@ -93,6 +107,7 @@ const styles = StyleSheet.create({
     height: 56,
     width: 263,
     borderRadius: 3,
+    color: "black",
     backgroundColor: 'white',
     borderColor: '#707070', 
     borderWidth: StyleSheet.hairlineWidth,
@@ -125,4 +140,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+export default SignUpScreen;

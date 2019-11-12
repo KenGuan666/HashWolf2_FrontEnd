@@ -1,6 +1,6 @@
 import { LOCAL_IP } from 'react-native-dotenv'; 
 
-const baseUrl = `http://${LOCAL_IP}:8080/hashwolf2`;
+const baseUrl = `http://${LOCAL_IP}:8080/user`;
 const axios = require('axios');
 
 exports.allUsers = () => {
@@ -15,11 +15,16 @@ exports.login = (username, password) => {
     if (username) {
         return {
             username,
-            userId: mockNameToId(username),
+            userid: mockNameToId(username),
         };
     }
     return {
         username: defaultUsername,
-        userId: 0,
+        userid: 0,
     };
+};
+
+exports.createNewUser = (email, username, password) => {
+    return axios.put(baseUrl, { email, name: username })
+        .then(res => res.data);
 };
