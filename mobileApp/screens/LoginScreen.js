@@ -1,5 +1,6 @@
 import Icon from 'react-native-vector-icons/FontAwesome';
 import React from 'react';
+import * as userApi from '../apis/User';
 import {
   View,
   StyleSheet,
@@ -7,8 +8,6 @@ import {
   TextInput,
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
-const defaultUsername = 'DEFAULT';
 
 class LoginScreen extends React.Component {
   static navigationOptions = {
@@ -54,7 +53,8 @@ class LoginScreen extends React.Component {
   };
 
   signIn = () => {
-    this.props.navigation.navigate('App', { user: { username: this.state.username ? this.state.username : defaultUsername } });
+    userObj = userApi.login(this.state.username, this.state.password);
+    this.props.navigation.navigate('App', { user: userObj });
   };
 
 };
