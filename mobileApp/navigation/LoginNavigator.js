@@ -2,6 +2,7 @@ import { Platform } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
 import LoginScreen from '../screens/LoginScreen';
+import SignUpScreen from '../screens/SignUpScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -11,8 +12,11 @@ const config = Platform.select({
 const NavigationStack = createStackNavigator(
   {
     SignIn: LoginScreen,
+    SignUp: SignUpScreen,
   },
-  config,
+  {
+    initialRouteName: 'SignIn',
+  },
 );
 
 NavigationStack.path = '';
