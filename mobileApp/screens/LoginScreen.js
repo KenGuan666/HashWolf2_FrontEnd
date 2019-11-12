@@ -19,6 +19,7 @@ class LoginScreen extends React.Component {
     this.state = {
       username: '',
       password: '',
+      signInError: false,
     };
   };
 
@@ -30,9 +31,11 @@ class LoginScreen extends React.Component {
           Aha
         </Text>
 
-        <TextInput style={styles.username} placeholder="   Mobile number or email" onChangeText={text => this.setState({ username: text })}/>
+        <TextInput style={styles.username} placeholder="   Username" onChangeText={text => this.setState({ username: text })}/>
         <TextInput style={styles.password} placeholder="   Enter your password" onChangeText={text => this.setState({ password: text })}/>
-
+        {
+          this.state.signInError && <Text style={styles.forgotpassword}> Sign In error, please try again! </Text>
+        }
         <Text style={styles.forgotpassword}> Forgot Password? </Text>
 
         <TouchableOpacity 
@@ -45,7 +48,7 @@ class LoginScreen extends React.Component {
         <View style={{ flexDirection: 'row', marginTop: 300 }}>
         <Text style={styles.signup}> Don't have an account? </Text>
         <TouchableOpacity onPress={this.signUp.bind(this)}>
-        <Text style={{ fontSize:14, color: '#33B5C3' }}> Sign up</Text>
+        <Text style={{ fontSize:14, color: '#33B5C3' }}> Sign up </Text>
         </TouchableOpacity>
         </View>
       </View>
@@ -53,8 +56,13 @@ class LoginScreen extends React.Component {
   };
 
   signIn = () => {
-    userObj = userApi.login(this.state.username, this.state.password);
-    this.props.navigation.navigate('App', { user: userObj });
+    userApi.login(this.state.username, this.state.password)
+      .then(data => {
+        if (data) {
+          return this.props.navigation.navigate('App', { user: data });
+        }
+        this.setState({ signInError: true });
+      })
   };
 
   signUp = () => {

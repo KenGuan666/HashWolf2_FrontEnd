@@ -21,7 +21,6 @@ class SignUpScreen extends React.Component {
       username: '',
       password: '',
       signUpError: false,
-      userObj: {},
     };
   };
 
@@ -40,7 +39,6 @@ class SignUpScreen extends React.Component {
         {
           this.state.signUpError && <Text style={styles.signup}> Sign Up error, please try again! </Text>
         }
-        <Text> {JSON.stringify(this.state.userObj)} </Text>
         <TouchableOpacity 
           style={styles.signin}
           onPress={this.create.bind(this)}
@@ -51,25 +49,21 @@ class SignUpScreen extends React.Component {
         <View style={{ flexDirection: 'row', marginTop: 300 }}>
         <Text style={styles.signup}> Already have an account? </Text>
         <TouchableOpacity onPress={this.signIn}>
-        <Text style={{ fontSize:14, color: '#33B5C3' }}> Sign in</Text>
+        <Text style={{ fontSize:14, color: '#33B5C3' }}> Sign in </Text>
         </TouchableOpacity>
         </View>
       </View>
     );
   };
 
-  create = () => {
-    self = this
-    return userApi.createNewUser(this.state.email, this.state.username)
+  create = () =>
+    userApi.createNewUser(this.state.email, this.state.username)
       .then(data => {
-        this.setState({ userObj: data });
         if (data) {
-          Object.assign(data, { username: data.name });
-          return self.props.navigation.navigate('App', { user: data });
+          return this.props.navigation.navigate('App', { user: data });
         }
         this.setState({ signUpError: true });
       });
-  }
 
   signIn = () => {
     this.props.navigation.navigate('SignIn');
